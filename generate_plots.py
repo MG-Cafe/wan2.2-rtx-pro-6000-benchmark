@@ -43,11 +43,11 @@ bars1 = ax.bar(x - width/2, t2v_steps, width, label='T2V (Text-to-Video)',
 bars2 = ax.bar(x + width/2, [s if s > 0 else 0 for s in i2v_steps], width, 
                label='I2V (Image-to-Video)', color=COLORS['orange'], edgecolor='white', linewidth=0.5)
 
-# Mark OOM
-ax.bar(x[0] + width/2, 37.13, width, color=COLORS['red'], alpha=0.3, 
+# Mark OOM for I2V 1-GPU (no timing data available - OOM before denoising)
+ax.bar(x[0] + width/2, 2, width, color=COLORS['red'], alpha=0.3, 
        edgecolor=COLORS['red'], linewidth=2, linestyle='--')
-ax.text(x[0] + width/2, 18, 'OOM', ha='center', va='center', fontweight='bold', 
-        color=COLORS['red'], fontsize=14)
+ax.text(x[0] + width/2, 5, 'OOM\n(no data)', ha='center', va='center', fontweight='bold', 
+        color=COLORS['red'], fontsize=10)
 
 # Add value labels
 for bar in bars1:
@@ -85,7 +85,7 @@ print("✅ Plot 1: Denoising time per step")
 fig, ax = plt.subplots(figsize=(10, 5))
 
 labels = ['I2V 8-GPU', 'I2V 4-GPU', 'I2V 1-GPU', '', 'T2V 8-GPU', 'T2V 4-GPU', 'T2V 1-GPU']
-times = [947.54, 995.00, 0, 0, 944.01, 993.15, 1501.9]
+times = [947.54, 995.00, 0, 0, 944.01, 993.15, 0]
 colors_list = [COLORS['orange'], COLORS['orange'], COLORS['red'], 'white',
                COLORS['blue'], COLORS['blue'], COLORS['red']]
 alphas = [1.0, 0.7, 0.4, 0, 1.0, 0.7, 0.4]
@@ -107,7 +107,7 @@ for i, (v, label) in enumerate(zip(times, labels)):
 ax.set_yticks(y_pos)
 ax.set_yticklabels(labels, fontsize=11)
 ax.set_xlabel('Total Generation Time (seconds)', fontsize=13, fontweight='bold')
-ax.set_title('End-to-End Video Generation Time\n(93 frames @ 1280×720, 40 denoising steps)', fontsize=15, fontweight='bold')
+ax.set_title('End-to-End Video Generation Time\n(1280×720, 40 denoising steps; 1-GPU=81fr, 4/8-GPU=93fr)', fontsize=15, fontweight='bold')
 ax.set_xlim(0, 1700)
 ax.grid(axis='x', alpha=0.3)
 ax.spines['top'].set_visible(False)

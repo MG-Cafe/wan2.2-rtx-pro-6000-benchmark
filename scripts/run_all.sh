@@ -135,7 +135,7 @@ echo "[Step 5/7] Running T2V benchmarks on ${VM_T2V}..."
 ${SSH_CMD} ${VM_T2V} --command="
 cat > /scratch/t2v_benchmarks.sh << 'SCRIPT'
 #!/bin/bash
-set -ex
+set -x
 
 echo '=== T2V 1-GPU (81 frames) ==='
 sglang generate --model-path Wan-AI/Wan2.2-T2V-A14B-Diffusers \
@@ -178,7 +178,7 @@ echo "[Step 6/7] Running I2V benchmarks on ${VM_I2V}..."
 ${SSH_CMD} ${VM_I2V} --command="
 cat > /scratch/i2v_benchmarks.sh << 'SCRIPT'
 #!/bin/bash
-set -ex
+set -x
 
 # Download test image
 mkdir -p assets

@@ -119,7 +119,7 @@ Single GPU OOMs because the 14B model + activations exceed the 95GB usable VRAM.
 | Model | Stage | VRAM Used | VRAM Capacity | Needed |
 |-------|-------|-----------|---------------|--------|
 | T2V | DecodingStage (after 1485s denoising) | 94.55 GB | 94.98 GB | +1.02 GB |
-| I2V | Inference (at ImageVAEEncoding) | 94.11 GB | 94.98 GB | +1.97 GB |
+| I2V | ImageVAEEncodingStage | 93.75 GB | 94.98 GB | +1.96 GB |
 
 Both OOM because the recipe disables all CPU offloading (`--dit-layerwise-offload false --vae-cpu-offload false`).
 
@@ -286,7 +286,7 @@ The following changes were made from the [original Google recipe](https://github
 - GPU configuration: `--gpus all`, `--ipc=host`
 - Volume mounts: `/scratch:/scratch`, `/scratch/cache:/root/.cache`
 
-**Note on default parameters:** The values `infer_steps=40`, `seed=42`, `guidance_scale=4.0` are SGLang defaults — they are not specified in the recipe and were not set by us. They appear in the SGLang `server_args` log output.
+**Note on default parameters:** The values `infer_steps=40`, `seed=42` are SGLang defaults — they are not specified in the recipe and were not set by us. `guidance_scale` defaults to 4.0 for T2V and 3.5 for I2V. These appear in the SGLang `server_args` log output.
 
 **Raw logs:** Partial raw SGLang output logs are preserved in `results/raw_logs/`. The 4-GPU and 1-GPU results were captured via direct SSH sessions (not background tasks) and are only available in the conversation history, not as separate log files.
 

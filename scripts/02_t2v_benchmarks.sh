@@ -1,5 +1,5 @@
 #!/bin/bash
-set -ex
+set -x
 
 echo "=== T2V Benchmarks Only ==="
 echo "SGLang will automatically download the Wan2.2-T2V-A14B-Diffusers model."

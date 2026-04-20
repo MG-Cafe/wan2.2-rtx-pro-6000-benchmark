@@ -21,7 +21,8 @@
     "dit_cpu_offload": false,
     "infer_steps": 40,
     "resolution": "1280x720",
-    "guidance_scale": 4.0,
+    "guidance_scale_t2v": 4.0,
+    "guidance_scale_i2v": 3.5,
     "embedded_guidance_scale": 6.0,
     "seed": 42
   },
@@ -103,10 +104,11 @@
         "denoising_total_sec": null,
         "decoding_sec": null,
         "total_sec": null,
-        "oom_stage": "Inference",
-        "oom_vram_used_gb": 94.11,
+        "oom_stage": "ImageVAEEncodingStage",
+        "oom_vram_used_gb": 93.75,
         "oom_vram_capacity_gb": 94.98,
-        "oom_allocation_needed_gb": 1.97
+        "oom_allocation_needed_gb": 1.96,
+        "note": "Log from prior session (April 19); same hardware/config"
       }
     },
     {

@@ -1,5 +1,5 @@
 #!/bin/bash
-set -ex
+set -x
 
 echo "============================================="
 echo "=== BENCHMARK: Text-to-Video on 8 GPUs ==="

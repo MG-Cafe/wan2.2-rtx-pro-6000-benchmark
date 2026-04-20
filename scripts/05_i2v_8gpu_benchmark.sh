@@ -1,5 +1,5 @@
 #!/bin/bash
-set -ex
+set -x
 
 echo "============================================="
 echo "=== Downloading test image for I2V ==="
