@@ -1,0 +1,24 @@
+WARNING:
+
+To increase the performance of the tunnel, consider installing NumPy. For instructions,
+please see https://cloud.google.com/iap/docs/using-tcp-forwarding#increasing_the_tcp_upload_bandwidth
+
+
+sglang-t2v-8gpu: Exited (0) About a minute ago
+[04-20 20:54:57] [DenoisingStage] average time per step: 23.0483 seconds
+[04-20 20:55:18] Output saved to [1;36moutputs/Summer_beach_vacation_style_a_white_cat_wearing_sunglasses_sits_on_a_surfboard._The_fluffy-furred_f_20260420-203934_f4d60fd1.mp4[0;0m
+[04-20 20:55:18] Pixel data generated successfully in [92m944.01[0;0m seconds
++ echo '=== T2V 8-GPU BENCHMARK COMPLETE ==='
+=== T2V 8-GPU BENCHMARK COMPLETE ===
+===
+WARNING:
+
+To increase the performance of the tunnel, consider installing NumPy. For instructions,
+please see https://cloud.google.com/iap/docs/using-tcp-forwarding#increasing_the_tcp_upload_bandwidth
+
+sglang-i2v-8gpu: Exited (0) 50 seconds ago
+[04-20 20:55:14] [DenoisingStage] average time per step: 22.8945 seconds
+[04-20 20:55:34] Output saved to [1;36moutputs/A_curious_raccoon_20260420-203947_c5dc3f01.mp4[0;0m
+[04-20 20:55:34] Pixel data generated successfully in [92m947.54[0;0m seconds
++ echo '=== I2V 8-GPU BENCHMARK COMPLETE ==='
+=== I2V 8-GPU BENCHMARK COMPLETE ===

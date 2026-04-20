@@ -1,0 +1,243 @@
+WARNING:
+
+To increase the performance of the tunnel, consider installing NumPy. For instructions,
+please see https://cloud.google.com/iap/docs/using-tcp-forwarding#increasing_the_tcp_upload_bandwidth
+
+
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 12.9.1
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+/sgl-workspace/sglang/python/sglang/multimodal_gen/runtime/entrypoints/post_training/weights_api.py:10: FastAPIDeprecationWarning: ORJSONResponse is deprecated, FastAPI now serializes data directly to JSON bytes via Pydantic when a return type or response model is set, which is faster and doesn't need a custom response class. Read more in the FastAPI docs: https://fastapi.tiangolo.com/advanced/custom-response/#orjson-or-response-model and https://fastapi.tiangolo.com/tutorial/response-model/
+  from sglang.srt.utils.json_response import orjson_response
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+WARNING:huggingface_hub.utils._http:Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[04-19 20:29:29] server_args: {"model_path": "Wan-AI/Wan2.2-I2V-A14B-Diffusers", "model_id": null, "backend": "auto", "attention_backend": null, "attention_backend_config": {}, "cache_dit_config": null, "nccl_port": null, "trust_remote_code": false, "revision": null, "num_gpus": 1, "tp_size": 1, "sp_degree": 1, "ulysses_degree": 1, "ring_degree": 1, "dp_size": 1, "dp_degree": 1, "enable_cfg_parallel": false, "hsdp_replicate_dim": 1, "hsdp_shard_dim": 1, "dist_timeout": 3600, "pipeline_class_name": null, "lora_path": null, "lora_nickname": "default", "lora_scale": 1.0, "component_paths": {}, "transformer_weights_path": null, "lora_target_modules": null, "dit_cpu_offload": false, "dit_layerwise_offload": false, "dit_offload_prefetch_size": 0.0, "text_encoder_cpu_offload": false, "image_encoder_cpu_offload": true, "vae_cpu_offload": false, "use_fsdp_inference": false, "pin_cpu_memory": true, "comfyui_mode": false, "enable_torch_compile": false, "warmup": false, "warmup_resolutions": null, "warmup_steps": 1, "disable_autocast": false, "master_port": 30005, "host": "127.0.0.1", "port": 30000, "webui": false, "webui_port": 12312, "scheduler_port": 5587, "strict_ports": false, "output_path": "outputs/", "input_save_path": "inputs/uploads", "prompt_file_path": null, "model_paths": {}, "model_loaded": {"transformer": true, "vae": true, "video_vae": true, "audio_vae": true, "video_dit": true, "audio_dit": true, "dual_tower_bridge": true}, "boundary_ratio": null, "log_level": "info", "uvicorn_access_log_exclude_prefixes": []}
+[04-19 20:29:29] Local mode: True
+[04-19 20:29:29] Starting server...
+/sgl-workspace/sglang/python/sglang/multimodal_gen/runtime/entrypoints/post_training/weights_api.py:10: FastAPIDeprecationWarning: ORJSONResponse is deprecated, FastAPI now serializes data directly to JSON bytes via Pydantic when a return type or response model is set, which is faster and doesn't need a custom response class. Read more in the FastAPI docs: https://fastapi.tiangolo.com/advanced/custom-response/#orjson-or-response-model and https://fastapi.tiangolo.com/tutorial/response-model/
+  from sglang.srt.utils.json_response import orjson_response
+[04-19 20:29:36] Scheduler bind at endpoint: tcp://127.0.0.1:5587
+[04-19 20:29:36] Initializing distributed environment with world_size=1, device=cuda:0, timeout=3600
+[04-19 20:29:36] Setting distributed timeout to 3600 seconds
+[04-19 20:29:37] No pipeline_class_name specified, using model_index.json
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[93m[04-19 20:29:37] Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.[0;0m
+[04-19 20:29:37] Using pipeline from model_index.json: WanImageToVideoPipeline
+[04-19 20:29:37] Loading pipeline modules...
+[04-19 20:29:37] Checking for cached model in HF Hub cache for Wan-AI/Wan2.2-I2V-A14B-Diffusers...
+[04-19 20:29:37] Found complete model in cache at /root/.cache/huggingface/hub/models--Wan-AI--Wan2.2-I2V-A14B-Diffusers/snapshots/596658fd9ca6b7b71d5057529bbf319ecbc61d74
+[04-19 20:29:37] Model path: /root/.cache/huggingface/hub/models--Wan-AI--Wan2.2-I2V-A14B-Diffusers/snapshots/596658fd9ca6b7b71d5057529bbf319ecbc61d74
+[04-19 20:29:37] Diffusers version: 0.35.0.dev0
+[04-19 20:29:37] Loading pipeline modules from config: {'_class_name': 'WanImageToVideoPipeline', '_diffusers_version': '0.35.0.dev0', 'boundary_ratio': 0.9, 'image_encoder': [None, None], 'image_processor': [None, None], 'scheduler': ['diffusers', 'UniPCMultistepScheduler'], 'text_encoder': ['transformers', 'UMT5EncoderModel'], 'tokenizer': ['transformers', 'T5TokenizerFast'], 'transformer': ['diffusers', 'WanTransformer3DModel'], 'transformer_2': ['diffusers', 'WanTransformer3DModel'], 'vae': ['diffusers', 'AutoencoderKLWan']}
+[04-19 20:29:37] MoE pipeline detected. Adding transformer_2 to self.required_config_modules...
+[04-19 20:29:37] Setting boundary ratio to 0.9
+[04-19 20:29:37] Loading required components: ['text_encoder', 'tokenizer', 'vae', 'transformer', 'scheduler', 'image_encoder', 'image_processor', 'transformer_2']
+Loading required modules:   0%|          | 0/8 [00:00<?, ?it/s][04-19 20:29:37] Loading text_encoder from /root/.cache/huggingface/hub/models--Wan-AI--Wan2.2-I2V-A14B-Diffusers/snapshots/596658fd9ca6b7b71d5057529bbf319ecbc61d74/text_encoder. avail mem: 89.62 GB
+[04-19 20:29:38] [RunAI Streamer] Overall time to stream 10.6 GiB of all files to cpu: 0.51s, 20.8 GiB/s
+[04-19 20:29:38] Loaded text_encoder: UMT5EncoderModel (sgl-diffusion version). model size: 21.16 GB, consumed GPU mem: 21.16 GB, avail GPU mem: 68.46 GB
+Loading required modules:  12%|█▎        | 1/8 [00:00<00:03,  1.75it/s][04-19 20:29:38] Loading tokenizer from /root/.cache/huggingface/hub/models--Wan-AI--Wan2.2-I2V-A14B-Diffusers/snapshots/596658fd9ca6b7b71d5057529bbf319ecbc61d74/tokenizer. avail mem: 68.46 GB
+[04-19 20:29:39] Loaded tokenizer: T5Tokenizer (sgl-diffusion version). model size: NA GB, consumed GPU mem: 0.00 GB, avail GPU mem: 68.46 GB
+Loading required modules:  25%|██▌       | 2/8 [00:01<00:05,  1.14it/s][04-19 20:29:39] Loading vae from /root/.cache/huggingface/hub/models--Wan-AI--Wan2.2-I2V-A14B-Diffusers/snapshots/596658fd9ca6b7b71d5057529bbf319ecbc61d74/vae. avail mem: 68.46 GB
+[04-19 20:29:39] Loaded vae: AutoencoderKLWan (sgl-diffusion version). model size: 0.47 GB, consumed GPU mem: 0.50 GB, avail GPU mem: 67.96 GB
+Loading required modules:  38%|███▊      | 3/8 [00:01<00:02,  1.90it/s][04-19 20:29:39] Loading transformer from /root/.cache/huggingface/hub/models--Wan-AI--Wan2.2-I2V-A14B-Diffusers/snapshots/596658fd9ca6b7b71d5057529bbf319ecbc61d74/transformer. avail mem: 67.96 GB
+[04-19 20:29:39] Loading WanTransformer3DModel from 12 safetensors file(s) , param_dtype: torch.bfloat16
+[04-19 20:29:39] Defaulting to Torch SDPA backend on SM12.x
+[04-19 20:29:39] Using Torch SDPA backend
+[04-19 20:29:39] Defaulting to Torch SDPA backend on SM12.x
+[04-19 20:29:39] Using Torch SDPA backend
+[04-19 20:29:40] [RunAI Streamer] Overall time to stream 53.2 GiB of all files to cpu: 1.36s, 39.2 GiB/s
+[04-19 20:29:45] Loaded model with 14.29B parameters
+[04-19 20:29:45] Loaded transformer: WanTransformer3DModel (sgl-diffusion version). model size: 26.62 GB, consumed GPU mem: 28.10 GB, avail GPU mem: 39.86 GB
+Loading required modules:  50%|█████     | 4/8 [00:08<00:11,  2.97s/it][04-19 20:29:45] Loading scheduler from /root/.cache/huggingface/hub/models--Wan-AI--Wan2.2-I2V-A14B-Diffusers/snapshots/596658fd9ca6b7b71d5057529bbf319ecbc61d74/scheduler. avail mem: 39.86 GB
+[04-19 20:29:45] Loaded scheduler: UniPCMultistepScheduler (sgl-diffusion version). model size: NA GB, consumed GPU mem: 0.00 GB, avail GPU mem: 39.86 GB
+[93m[04-19 20:29:45] Module image_encoder in model_index.json has null value, removing from required_config_modules[0;0m
+[93m[04-19 20:29:45] Module image_processor in model_index.json has null value, removing from required_config_modules[0;0m
+[04-19 20:29:45] Loading transformer_2 from /root/.cache/huggingface/hub/models--Wan-AI--Wan2.2-I2V-A14B-Diffusers/snapshots/596658fd9ca6b7b71d5057529bbf319ecbc61d74/transformer_2. avail mem: 39.86 GB
+[04-19 20:29:45] Loading WanTransformer3DModel from 12 safetensors file(s) , param_dtype: torch.bfloat16
+[04-19 20:29:47] [RunAI Streamer] Overall time to stream 53.2 GiB of all files to cpu: 1.49s, 35.7 GiB/s
+[04-19 20:29:52] Loaded model with 14.29B parameters
+[04-19 20:29:52] Loaded transformer_2: WanTransformer3DModel (sgl-diffusion version). model size: 26.62 GB, consumed GPU mem: 28.10 GB, avail GPU mem: 11.76 GB
+Loading required modules: 100%|██████████| 8/8 [00:15<00:00,  2.12s/it]Loading required modules: 100%|██████████| 8/8 [00:15<00:00,  1.93s/it]
+[04-19 20:29:52] Creating pipeline stages...
+[04-19 20:29:52] Defaulting to Torch SDPA backend on SM12.x
+[04-19 20:29:52] Using Torch SDPA backend
+[04-19 20:29:52] Pipeline instantiated
+[04-19 20:29:52] Worker 0: Initialized device, model, and distributed environment.
+[04-19 20:29:52] Worker 0: Scheduler loop started.
+[04-19 20:29:53] Resolution unspecified, using default: (1280, 720)
+[04-19 20:29:53] Sequence dimension shard is enabled, disabling frame adjustment for better performance
+[04-19 20:29:53] Adjusting number of frames from 81 to 81 based on model
+[04-19 20:29:53] Processing prompt 1/1: <redacted, len=17>
+[04-19 20:29:53] Sampling params:
+                       width: 1280
+                      height: 720
+                  num_frames: 81
+                         fps: 16
+                      prompt: <redacted, len=17>
+                  neg_prompt: <redacted, len=137>
+                        seed: 42
+                 infer_steps: 40
+      num_outputs_per_prompt: 1
+              guidance_scale: 3.5
+     embedded_guidance_scale: 6.0
+                    n_tokens: None
+                  flow_shift: 5.0
+                  image_path: ['/scratch/assets/sample_image.jpg']
+                 save_output: True
+            output_file_path: outputs/A_curious_raccoon_20260419-202953_79814ce7.mp4
+
+[04-19 20:29:53] Running pipeline stages: ['InputValidationStage', 'TextEncodingStage', 'ImageVAEEncodingStage', 'LatentPreparationStage', 'TimestepPreparationStage', 'DenoisingStage', 'DecodingStage']
+[04-19 20:29:53] [InputValidationStage] started...
+[04-19 20:29:53] [InputValidationStage] finished in 0.0122 seconds
+[04-19 20:29:53] [TextEncodingStage] started...
+[04-19 20:29:53] [TextEncodingStage] finished in 0.4312 seconds
+[04-19 20:29:53] [ImageVAEEncodingStage] started...
+[91m[04-19 20:29:53] [ImageVAEEncodingStage] Error during execution after 456.5383 ms: CUDA out of memory. Tried to allocate 1.96 GiB. GPU 0 has a total capacity of 94.98 GiB of which 1.22 GiB is free. Including non-PyTorch memory, this process has 93.75 GiB memory in use. Of the allocated memory 83.86 GiB is allocated by PyTorch, and 4.52 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+Traceback (most recent call last):
+  File "/sgl-workspace/sglang/python/sglang/multimodal_gen/runtime/pipelines_core/stages/base.py", line 203, in __call__
+    result = self.forward(batch, server_args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sgl-workspace/sglang/python/sglang/multimodal_gen/runtime/pipelines_core/stages/image_encoding.py", line 317, in forward
+    latent_dist: DiagonalGaussianDistribution = self.vae.encode(
+                                                ^^^^^^^^^^^^^^^^
+  File "/sgl-workspace/sglang/python/sglang/multimodal_gen/runtime/models/vaes/wanvae.py", line 901, in encode
+    out_ = self.encoder(x[:, :, 1 + 4 * (i - 1) : 1 + 4 * i, :, :])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sgl-workspace/sglang/python/sglang/multimodal_gen/runtime/models/vaes/wanvae.py", line 426, in forward
+    x = layer(x)
+        ^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sgl-workspace/sglang/python/sglang/multimodal_gen/runtime/models/vaes/wanvae.py", line 183, in forward
+    return residual_block_forward(self, x)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sgl-workspace/sglang/python/sglang/multimodal_gen/runtime/models/vaes/parallel/wan_common_utils.py", line 338, in residual_block_forward
+    x = self.conv1(x, _feat_cache[idx])
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sgl-workspace/sglang/python/sglang/multimodal_gen/runtime/models/vaes/parallel/wan_common_utils.py", line 150, in forward
+    x = F.pad(x, padding)
+        ^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/torch/nn/functional.py", line 5294, in pad
+    return torch._C._nn.pad(input, pad, mode, value)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 1.96 GiB. GPU 0 has a total capacity of 94.98 GiB of which 1.22 GiB is free. Including non-PyTorch memory, this process has 93.75 GiB memory in use. Of the allocated memory 83.86 GiB is allocated by PyTorch, and 4.52 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)[0;0m
+[91m[04-19 20:29:54] Error executing request 05663d75-42c8-4fd0-b83a-57635484047f: CUDA out of memory. Tried to allocate 1.96 GiB. GPU 0 has a total capacity of 94.98 GiB of which 1.22 GiB is free. Including non-PyTorch memory, this process has 93.75 GiB memory in use. Of the allocated memory 83.86 GiB is allocated by PyTorch, and 4.52 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+Traceback (most recent call last):
+  File "/sgl-workspace/sglang/python/sglang/multimodal_gen/runtime/managers/gpu_worker.py", line 230, in execute_forward
+    result = self.pipeline.forward(req, self.server_args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/torch/utils/_contextlib.py", line 120, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/sgl-workspace/sglang/python/sglang/multimodal_gen/runtime/pipelines_core/composed_pipeline_base.py", line 622, in forward
+    return self.executor.execute_with_profiling(self.stages, batch, server_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sgl-workspace/sglang/python/sglang/multimodal_gen/runtime/pipelines_core/executors/pipeline_executor.py", line 57, in execute_with_profiling
+    batch = self.execute(stages, batch, server_args)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sgl-workspace/sglang/python/sglang/multimodal_gen/runtime/pipelines_core/executors/parallel_executor.py", line 101, in execute
+    batch = self._execute(stages, batch, server_args)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sgl-workspace/sglang/python/sglang/multimodal_gen/runtime/pipelines_core/executors/parallel_executor.py", line 92, in _execute
+    batch = stage(batch, server_args)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sgl-workspace/sglang/python/sglang/multimodal_gen/runtime/pipelines_core/stages/base.py", line 203, in __call__
+    result = self.forward(batch, server_args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sgl-workspace/sglang/python/sglang/multimodal_gen/runtime/pipelines_core/stages/image_encoding.py", line 317, in forward
+    latent_dist: DiagonalGaussianDistribution = self.vae.encode(
+                                                ^^^^^^^^^^^^^^^^
+  File "/sgl-workspace/sglang/python/sglang/multimodal_gen/runtime/models/vaes/wanvae.py", line 901, in encode
+    out_ = self.encoder(x[:, :, 1 + 4 * (i - 1) : 1 + 4 * i, :, :])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sgl-workspace/sglang/python/sglang/multimodal_gen/runtime/models/vaes/wanvae.py", line 426, in forward
+    x = layer(x)
+        ^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sgl-workspace/sglang/python/sglang/multimodal_gen/runtime/models/vaes/wanvae.py", line 183, in forward
+    return residual_block_forward(self, x)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sgl-workspace/sglang/python/sglang/multimodal_gen/runtime/models/vaes/parallel/wan_common_utils.py", line 338, in residual_block_forward
+    x = self.conv1(x, _feat_cache[idx])
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sgl-workspace/sglang/python/sglang/multimodal_gen/runtime/models/vaes/parallel/wan_common_utils.py", line 150, in forward
+    x = F.pad(x, padding)
+        ^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/torch/nn/functional.py", line 5294, in pad
+    return torch._C._nn.pad(input, pad, mode, value)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 1.96 GiB. GPU 0 has a total capacity of 94.98 GiB of which 1.22 GiB is free. Including non-PyTorch memory, this process has 93.75 GiB memory in use. Of the allocated memory 83.86 GiB is allocated by PyTorch, and 4.52 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)[0;0m
+[93m[04-19 20:29:54]
+OOM detected. Possible solutions:
+  - If the OOM occurs during loading:
+    1. Enable CPU offload for memory-intensive components, or use `--dit-layerwise-offload` for DiT
+  - If the OOM occurs during runtime:
+    1. Enable SP and/or TP (in a multi-GPU setup)
+    2. Reduce the number of output tokens by lowering resolution or decreasing `--num-frames`
+    3. Opt for a sparse-attention backend
+    4. Enable FSDP by `--use-fsdp-inference` (in a multi-GPU setup)
+    5. Enable quantization (e.g. nunchaku)
+  Or, open an issue on GitHub https://github.com/sgl-project/sglang/issues/new/choose
+[0;0m
+[91m[04-19 20:29:54] Failed to generate output for prompt 1: Error executing request 05663d75-42c8-4fd0-b83a-57635484047f: CUDA out of memory. Tried to allocate 1.96 GiB. GPU 0 has a total capacity of 94.98 GiB of which 1.22 GiB is free. Including non-PyTorch memory, this process has 93.75 GiB memory in use. Of the allocated memory 83.86 GiB is allocated by PyTorch, and 4.52 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+Traceback (most recent call last):
+  File "/sgl-workspace/sglang/python/sglang/multimodal_gen/runtime/utils/logging_utils.py", line 625, in log_generation_timer
+    yield timer
+  File "/sgl-workspace/sglang/python/sglang/multimodal_gen/runtime/entrypoints/diffusion_generator.py", line 235, in generate
+    raise Exception(f"{output_batch.error}")
+Exception: Error executing request 05663d75-42c8-4fd0-b83a-57635484047f: CUDA out of memory. Tried to allocate 1.96 GiB. GPU 0 has a total capacity of 94.98 GiB of which 1.22 GiB is free. Including non-PyTorch memory, this process has 93.75 GiB memory in use. Of the allocated memory 83.86 GiB is allocated by PyTorch, and 4.52 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)[0;0m
+[91m[04-19 20:29:54] Generation failed for prompt 1/1: Error executing request 05663d75-42c8-4fd0-b83a-57635484047f: CUDA out of memory. Tried to allocate 1.96 GiB. GPU 0 has a total capacity of 94.98 GiB of which 1.22 GiB is free. Including non-PyTorch memory, this process has 93.75 GiB memory in use. Of the allocated memory 83.86 GiB is allocated by PyTorch, and 4.52 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+Traceback (most recent call last):
+  File "/sgl-workspace/sglang/python/sglang/multimodal_gen/runtime/entrypoints/diffusion_generator.py", line 235, in generate
+    raise Exception(f"{output_batch.error}")
+Exception: Error executing request 05663d75-42c8-4fd0-b83a-57635484047f: CUDA out of memory. Tried to allocate 1.96 GiB. GPU 0 has a total capacity of 94.98 GiB of which 1.22 GiB is free. Including non-PyTorch memory, this process has 93.75 GiB memory in use. Of the allocated memory 83.86 GiB is allocated by PyTorch, and 4.52 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)[0;0m
+[04-19 20:29:54] Completed batch processing. Generated 0 outputs in [92m0.91[0;0m seconds
+[93m[04-19 20:29:54] Generator was garbage collected without being shut down. Attempting to shut down the local server and client.[0;0m
+[04-19 20:29:59] Worker 0: Shutdown complete.
+=== I2V_1GPU_VERIFY ===
+I2V_1GPU_81F=43s

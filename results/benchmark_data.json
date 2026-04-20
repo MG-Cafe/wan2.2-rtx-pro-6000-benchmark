@@ -1,0 +1,158 @@
+{
+  "metadata": {
+    "date": "2026-04-20",
+    "platform": "Google Cloud G4 VM (g4-standard-384)",
+    "gpu": "NVIDIA RTX PRO 6000 Blackwell",
+    "gpu_count_per_node": 8,
+    "gpu_memory_gb": 96,
+    "interconnect": "PCIe Gen5",
+    "cuda_version": "12.9.1",
+    "driver_version": "570.211.01",
+    "framework": "SGLang (lmsysorg/sglang:latest)",
+    "zone": "europe-west4-b",
+    "project": "your-project-id",
+    "recipe_source": "https://github.com/AI-Hypercomputer/gpu-recipes/tree/main/inference/g4/wan2.2/sglang"
+  },
+  "common_config": {
+    "dit_layerwise_offload": false,
+    "text_encoder_cpu_offload": false,
+    "vae_cpu_offload": false,
+    "pin_cpu_memory": true,
+    "dit_cpu_offload": false,
+    "infer_steps": 40,
+    "resolution": "1280x720",
+    "guidance_scale": 4.0,
+    "embedded_guidance_scale": 6.0,
+    "seed": 42
+  },
+  "benchmarks": [
+    {
+      "id": "t2v_1gpu",
+      "model": "Wan-AI/Wan2.2-T2V-A14B-Diffusers",
+      "task": "text-to-video",
+      "num_gpus": 1,
+      "tp_size": 1,
+      "num_frames": 81,
+      "prompt": "Summer beach vacation style, a white cat wearing sunglasses sits on a surfboard. The fluffy-furred feline gazes directly at the camera with a relaxed expression. Blurred beach scenery forms the background featuring crystal-clear waters, distant green hills, and a blue sky dotted with white clouds. The cat assumes a naturally relaxed posture, as if savoring the sea breeze and warm sunlight. A close-up shot highlights the feline's intricate details and the refreshing atmosphere of the seaside.",
+      "status": "OOM",
+      "results": {
+        "denoising_sec_per_step": 37.128,
+        "denoising_total_sec": 1485.12,
+        "decoding_sec": null,
+        "total_sec": null,
+        "oom_stage": "DecodingStage",
+        "oom_vram_used_gb": 94.55,
+        "oom_vram_capacity_gb": 94.98,
+        "oom_allocation_needed_gb": 1.02
+      }
+    },
+    {
+      "id": "t2v_4gpu",
+      "model": "Wan-AI/Wan2.2-T2V-A14B-Diffusers",
+      "task": "text-to-video",
+      "num_gpus": 4,
+      "tp_size": 4,
+      "num_frames": 93,
+      "prompt": "Summer beach vacation style, a white cat wearing sunglasses sits on a surfboard. The fluffy-furred feline gazes directly at the camera with a relaxed expression. Blurred beach scenery forms the background featuring crystal-clear waters, distant green hills, and a blue sky dotted with white clouds. The cat assumes a naturally relaxed posture, as if savoring the sea breeze and warm sunlight. A close-up shot highlights the feline's intricate details and the refreshing atmosphere of the seaside.",
+      "status": "success",
+      "results": {
+        "denoising_sec_per_step": 24.274,
+        "denoising_total_sec": 970.963,
+        "decoding_sec": 18.356,
+        "total_sec": 993.15,
+        "output_file": "outputs/Summer_beach_vacation_style_..._20260420-200940_33be0c36.mp4",
+        "pipeline_stages": {
+          "InputValidation": 0.0,
+          "TextEncoding": 1.754,
+          "LatentPreparation": 0.001,
+          "TimestepPreparation": 0.0,
+          "Denoising": 970.963,
+          "Decoding": 18.356
+        }
+      }
+    },
+    {
+      "id": "t2v_8gpu",
+      "model": "Wan-AI/Wan2.2-T2V-A14B-Diffusers",
+      "task": "text-to-video",
+      "num_gpus": 8,
+      "tp_size": 8,
+      "num_frames": 93,
+      "prompt": "Summer beach vacation style, a white cat wearing sunglasses sits on a surfboard. The fluffy-furred feline gazes directly at the camera with a relaxed expression. Blurred beach scenery forms the background featuring crystal-clear waters, distant green hills, and a blue sky dotted with white clouds. The cat assumes a naturally relaxed posture, as if savoring the sea breeze and warm sunlight. A close-up shot highlights the feline's intricate details and the refreshing atmosphere of the seaside.",
+      "status": "success",
+      "results": {
+        "denoising_sec_per_step": 23.048,
+        "denoising_total_sec": 921.933,
+        "decoding_sec": 18.157,
+        "total_sec": 944.01,
+        "output_file": "outputs/Summer_beach_vacation_style_..._20260420-203934_f4d60fd1.mp4"
+      }
+    },
+    {
+      "id": "i2v_1gpu",
+      "model": "Wan-AI/Wan2.2-I2V-A14B-Diffusers",
+      "task": "image-to-video",
+      "num_gpus": 1,
+      "tp_size": 1,
+      "num_frames": 81,
+      "prompt": "A curious raccoon",
+      "image_path": "assets/logo.png",
+      "status": "OOM",
+      "results": {
+        "denoising_sec_per_step": null,
+        "denoising_total_sec": null,
+        "decoding_sec": null,
+        "total_sec": null,
+        "oom_stage": "Inference",
+        "oom_vram_used_gb": 94.11,
+        "oom_vram_capacity_gb": 94.98,
+        "oom_allocation_needed_gb": 1.97
+      }
+    },
+    {
+      "id": "i2v_4gpu",
+      "model": "Wan-AI/Wan2.2-I2V-A14B-Diffusers",
+      "task": "image-to-video",
+      "num_gpus": 4,
+      "tp_size": 4,
+      "num_frames": 93,
+      "prompt": "A curious raccoon",
+      "image_path": "assets/logo.png",
+      "status": "success",
+      "results": {
+        "denoising_sec_per_step": 24.087,
+        "denoising_total_sec": 963.494,
+        "decoding_sec": 18.126,
+        "total_sec": 995.0,
+        "output_file": "outputs/A_curious_raccoon_20260420-195044_11385282.mp4",
+        "pipeline_stages": {
+          "InputValidation": 0.036,
+          "TextEncoding": 1.721,
+          "ImageVAEEncoding": 9.594,
+          "LatentPreparation": 0.001,
+          "TimestepPreparation": 0.001,
+          "Denoising": 963.494,
+          "Decoding": 18.126
+        }
+      }
+    },
+    {
+      "id": "i2v_8gpu",
+      "model": "Wan-AI/Wan2.2-I2V-A14B-Diffusers",
+      "task": "image-to-video",
+      "num_gpus": 8,
+      "tp_size": 8,
+      "num_frames": 93,
+      "prompt": "A curious raccoon",
+      "image_path": "assets/logo.png",
+      "status": "success",
+      "results": {
+        "denoising_sec_per_step": 22.895,
+        "denoising_total_sec": 915.783,
+        "decoding_sec": 17.931,
+        "total_sec": 947.54,
+        "output_file": "outputs/A_curious_raccoon_20260420-203947_c5dc3f01.mp4"
+      }
+    }
+  ]
+}
