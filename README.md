@@ -127,7 +127,38 @@ Both OOM because the recipe disables all CPU offloading (`--dit-layerwise-offloa
 
 ## Reproducing the Benchmarks
 
-### Step 1: Create a G4 VM
+### One-Command End-to-End (Recommended)
+
+The `scripts/run_all.sh` script automates everything: creates 2 G4 VMs, installs Docker + NVIDIA toolkit, pulls the SGLang image, runs all 6 benchmarks (T2V + I2V × 1/4/8 GPUs) in parallel on separate VMs, waits for completion, and collects full logs.
+
+```bash
+# Prerequisites: gcloud CLI authenticated, GPU quota for g4-standard-384
+git clone https://github.com/MG-Cafe/wan2.2-rtx-pro-6000-benchmark.git
+cd wan2.2-rtx-pro-6000-benchmark
+
+export PROJECT_ID="your-project-id"
+export ZONE="europe-west4-b"  # any zone with G4 capacity
+
+bash scripts/run_all.sh
+```
+
+**What `run_all.sh` does (7 steps):**
+1. Creates 2 G4 VMs (`g4-standard-384`, 8× RTX PRO 6000, 500GB disk)
+2. Resizes filesystem to use full 500GB
+3. Installs Docker + NVIDIA Container Toolkit on both VMs
+4. Pulls `lmsysorg/sglang:latest` Docker image on both VMs
+5. Runs T2V benchmarks (1/4/8 GPU) on VM1
+6. Runs I2V benchmarks (1/4/8 GPU) on VM2
+7. Polls for completion, collects full logs to `results/run_*/`
+
+**Time estimate:** ~2 hours total (setup ~15 min, benchmarks ~1.5 hours)
+**Cost estimate:** ~$50-80 for the full benchmark run (2× g4-standard-384 for ~2 hours)
+
+### Manual Step-by-Step
+
+If you prefer to run steps manually:
+
+#### Step 1: Create a G4 VM
 
 ```bash
 export PROJECT_ID="your-project-id"
@@ -143,21 +174,21 @@ gcloud compute instances create g4-sglang-wan22 \
   --boot-disk-size=500GB
 ```
 
-### Step 2: Setup Docker & NVIDIA Container Toolkit
+#### Step 2: Setup Docker & NVIDIA Container Toolkit
 
 ```bash
 # SSH into the VM
 gcloud compute ssh g4-sglang-wan22 --project=${PROJECT_ID} --zone=${ZONE} --tunnel-through-iap
 
-# Run the setup script (see scripts/01_vm_setup.sh)
-sudo bash scripts/01_vm_setup.sh
-
-# Resize filesystem if needed
+# Resize filesystem
 sudo growpart /dev/nvme0n1 1
 sudo resize2fs /dev/nvme0n1p1
+
+# Run the setup script (see scripts/01_vm_setup.sh)
+sudo bash scripts/01_vm_setup.sh
 ```
 
-### Step 3: Run Benchmarks
+#### Step 3: Run Benchmarks
 
 ```bash
 # Start SGLang container
@@ -285,6 +316,7 @@ The following changes were made from the [original Google recipe](https://github
 │   ├── 05_cost_performance.png
 │   └── 06_memory_usage.png
 ├── scripts/
+│   ├── run_all.sh               # ⭐ One-command end-to-end runner
 │   ├── 01_vm_setup.sh           # VM Docker + NVIDIA setup
 │   ├── 02_t2v_benchmarks.sh     # T2V 1-GPU & 4-GPU benchmarks
 │   ├── 03_i2v_benchmarks.sh     # I2V 1-GPU & 4-GPU benchmarks
